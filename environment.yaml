@@ -1,0 +1,25 @@
+name: primdiffusion
+channels:
+  - pytorch
+dependencies:
+  - python=3.10
+  - pytorch=1.12.1
+  - cudatoolkit=11.3
+  - torchvision
+  - pip
+  - pip:
+    - einops
+    - opencv-python
+    - cmake
+    - tqdm
+    - imageio-ffmpeg
+    - omegaconf
+    - scipy
+    - scikit-learn
+    - scikit-image
+    - imageio
+    - chumpy
+    - numpy==1.23.5
+    - tensorboard
+    - tensorboardX==2.2
+    - protobuf==3.20

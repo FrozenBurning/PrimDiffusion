@@ -1,0 +1,84 @@
+root_data_dir: ./data/render_people/20230228
+smpl_dir: ./data/smpl
+
+image_height: 512
+image_width: 512
+
+module_name: primitive_diffusion
+
+model:
+  class_name: primdiffusion.model.${module_name}.PrimDiffusion
+  smpl_gender: NEUTRAL
+  unet_config:
+    in_channels: 56
+    out_channels: 56
+    channels: 128
+    n_res_blocks: 2
+    attention_levels: [8, 4]
+    channel_multipliers: [1, 2, 3, 4]
+    n_heads: 8 # mod 8
+    dims: 2
+    d_cond:
+    use_checkpoint: False
+    scaling_factor: 0.182
+    normalize_bystd: False
+  bodydecoder_config:
+    n_prims: 1024
+    prim_size: 8
+    n_pose_dims: 69
+    n_pose_enc_channels: 32
+    prim_motion_enabled: true
+    prim_motion_start_train: 0
+    prim_rt_enabled: false
+    smpl_gender: ${model.smpl_gender}
+    image_height: ${image_height}
+    image_width: ${image_width}
+
+pretrained_encoder:
+
+rm:
+  volradius: 10000.0
+  dt: 1.0
+
+optimizer:
+  class_name: torch.optim.Adam
+  lr: 1.0e-05
+
+train:
+  batch_size: 8
+  n_epochs: 10000
+  n_max_iters: 1000000
+  log_every_n_steps: 10
+  summary_every_n_steps: 5000
+  ckpt_every_n_steps: 5000
+  gradient_clip_value: 5.0
+  amp: true
+
+cameras_train:
+  [
+    "00",
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+  ]
+
+cameras_cond: ["00",]
+
+tag: ${module_name}_stage2_primdiffusion
+output_dir: ${root_data_dir}/../training-logs/${tag}
+
+ref_frame: 0
+
+data:
+  root_dir: ${root_data_dir}
+  subject_ids: ${root_data_dir}/release_human_list.txt
+  image: ${root_data_dir}/{people_id}/img/{camera}/{frame:04d}.jpg
+  image_mask: ${root_data_dir}/{people_id}/mask/{camera}/{frame:04d}.png
+  image_part_mask: ${root_data_dir}/{people_id}/mask/{camera}/{frame:04d}.png
+  smpl_poses: ${root_data_dir}/{people_id}/outputs_re_fitting/refit_smpl_2nd.npz
+  cam_path: ${root_data_dir}/{people_id}/cameras.json
+  smpl_topology: ${smpl_dir}/SMPL_${model.smpl_gender}.pkl
