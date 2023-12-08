@@ -18,8 +18,8 @@
 </div>
 <div>
 
-<a target="_blank" href="https://arxiv.org/abs/xxxx.xxxxx">
-  <img src="https://img.shields.io/badge/arXiv-xxxx.xxxxx-b31b1b.svg" alt="arXiv Paper"/>
+<a target="_blank" href="https://arxiv.org/abs/2312.04559">
+  <img src="https://img.shields.io/badge/arXiv-2312.04559-b31b1b.svg" alt="arXiv Paper"/>
 </a>
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FFrozenBurning%2FPrimDiffusion&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
 </div>
@@ -28,7 +28,7 @@
 <h4>TL;DR</h4>
 <h5>PrimDiffusion generates 3D human by denoising a set of volumetric primitives. <br> Our method enables explicit pose, view and shape control with real-time rendering in high resolution.</h5>
 
-### [Paper](https://arxiv.org/abs/xxxx.xxxxx) | [Project Page](https://frozenburning.github.io/projects/primdiffusion) | [Video](https://youtu.be/zprHGZ7Gm7A)
+### [Paper](https://arxiv.org/abs/2312.04559) | [Project Page](https://frozenburning.github.io/projects/primdiffusion) | [Video](https://youtu.be/zprHGZ7Gm7A)
 
 <br>
 
